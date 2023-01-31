@@ -6,7 +6,9 @@ import { type Order } from '../domian/Criteria/Order'
 type MongoFilterOperator = '$eq' | '$ne' | '$gt' | '$lt' | '$regex'
 type MongoFilterValue = boolean | string | number
 type MongoFilterOperation = { [operator in MongoFilterOperator]?: MongoFilterValue }
-type MongoFilter = Record<string, MongoFilterOperation> | Record<string, { $not: MongoFilterOperation }>
+type MongoFilter =
+  | Record<string, MongoFilterOperation>
+  | Record<string, { $not: MongoFilterOperation }>
 type MongoDirection = 1 | -1
 type MongoSort = Record<string, MongoDirection>
 
@@ -43,7 +45,7 @@ export class MongoCriteriaConverter {
   }
 
   protected generateFilter(filters: Filter[]): MongoFilter {
-    const filter = filters.map(filter => {
+    const filter = filters.map((filter) => {
       const transformer = this.filterTransformers.get(filter.filterOperator)
 
       if (transformer == null) {

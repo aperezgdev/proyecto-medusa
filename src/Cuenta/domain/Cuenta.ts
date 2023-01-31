@@ -25,6 +25,10 @@ export class Cuenta extends AggregateRoot {
     this.cuentaCantidad = this.cuentaCantidad.ingresar(ingresoCantidad.value)
   }
 
+  calcularIngreso(ingresoCantidad: IngresoCantidad) {
+    return this.cuentaCantidad.ingresar(ingresoCantidad.value)
+  }
+
   toPrimitives() {
     return {
       id: this.id.value,
