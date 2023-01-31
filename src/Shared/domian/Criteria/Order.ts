@@ -1,4 +1,4 @@
-import { type OrderType } from './OrderType'
+import { OrderType } from './OrderType'
 
 export class Order {
   readonly orderBy: string
@@ -7,5 +7,13 @@ export class Order {
   constructor(orderBy: string, orderType: OrderType) {
     this.orderBy = orderBy
     this.orderType = orderType
+  }
+
+  isAsc() {
+    return this.orderType === OrderType.ASC
+  }
+
+  isDesc() {
+    return this.orderType === OrderType.DESC
   }
 }
