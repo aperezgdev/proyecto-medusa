@@ -2,6 +2,8 @@ import { type ConceptoFinder } from '../../Concepto/domain/ConceptoFinder'
 import { type ConceptoId } from '../../Concepto/domain/ConceptoId'
 import { type CuentaFinder } from '../../Cuenta/domain/CuentaFinder'
 import { type CuentaId } from '../../Cuenta/domain/CuentaId'
+import { type UserFinder } from '../../User/domain/UserFinder'
+import { type UserId } from '../../User/domain/UserId'
 import { Ingreso } from '../domain/Ingreso'
 import { type IngresoCantidad } from '../domain/IngresoCantidad'
 import { type IngresoFecha } from '../domain/IngresoFecha'
@@ -11,6 +13,7 @@ export class IngresoCreator {
   constructor(
     readonly ingresoRepository: IngresoRepository,
     readonly conceptoFinder: ConceptoFinder,
+    readonly userFinder: UserFinder,
     readonly cuentaFinder: CuentaFinder
   ) {}
 
@@ -18,11 +21,13 @@ export class IngresoCreator {
     cantidad: IngresoCantidad,
     idConcepto: ConceptoId,
     fecha: IngresoFecha,
-    idCuenta: CuentaId
+    idCuenta: CuentaId,
+    idUser: UserId
   ) {
     const concepto = await this.conceptoFinder.run(idConcepto)
     const cuenta = await this.cuentaFinder.run(idCuenta)
-    const ingreso = Ingreso.create(cantidad, concepto, fecha, cuenta)
+    const user = await this.userFinder.run(idUser)
+    const ingreso = Ingreso.create(cantidad, concepto, fecha, cuenta, user)
     await this.ingresoRepository.save(ingreso)
   }
 }
