@@ -4,7 +4,7 @@ export const Login = () => {
       <section className="w-[70%] h-screen bg-gradient-to-l from-fuchsia-600 to-pink-600"></section>
       <section className="flex w-[30%] h-screen justify-center items-center">
         <article className="flex flex-col w-[80%] h-[30%] justify-center items-center gap-[15%]">
-          <img src="public/Medusa.png" className="w-1/2"></img>
+          <img src="/Medusa.png" className="w-1/2"></img>
           <form className="flex flex-col gap-7 w-[100%] justify-center items-center">
             <input
               type="text"
