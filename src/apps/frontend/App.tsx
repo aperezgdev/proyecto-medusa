@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-red-700'>Vite + React</h1>
-      <div className="card">
-        <button
-          onClick={() => {
-            setCount((count) => count + 1)
-          }}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
+    <main className="flex flex-row">
+      <section className="w-[70%] h-screen bg-gradient-to-l from-fuchsia-600 to-pink-600"></section>
+      <section className="flex w-[30%] h-screen justify-center items-center">
+        <article className="flex flex-col w-[80%] h-[30%] justify-center items-center gap-[15%]">
+          <img src="public/Medusa.png" className="w-1/2"></img>
+          <form className="flex flex-col gap-7 w-[100%] justify-center items-center ">
+            <input
+              type="text"
+              placeholder="Usuario"
+              className="border w-[65%] text-xl p-2 bg-[#EBEBEB]"
+            />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              className="border  w-[65%] text-xl p-2 bg-[#EBEBEB]"
+            />
+            <input
+              type="submit"
+              value="INICIAR SESIÓN"
+              className="bg-[#C026D3] text-white text-xl cursor-pointer font-bold p-2 w-[50%] "
+            />
+            <p className="text-lg">
+              ¿No tienes cuenta? <a className="text-blue-600 underline cursor-pointer">Crear</a>
+            </p>
+          </form>
+        </article>
+      </section>
+    </main>
   )
 }
 
