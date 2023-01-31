@@ -13,4 +13,12 @@ export class Criteria {
     this.limit = limit
     this.offset = offset
   }
+
+  hasFilters() {
+    return this.filters.length > 0
+  }
+
+  hasOrder() {
+    return this.order != null
+  }
 }
