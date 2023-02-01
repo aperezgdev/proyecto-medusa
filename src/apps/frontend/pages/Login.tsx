@@ -1,11 +1,23 @@
+import { useNavigate } from 'react-router-dom'
+
 export const Login = () => {
+  const navigate = useNavigate()
+
+  function handlerLogin(event: any) {
+    event.preventDefault()
+    navigate('/menu')
+  }
+
   return (
     <main className="flex flex-row">
       <section className="w-[70%] h-screen bg-gradient-to-l from-fuchsia-600 to-pink-600"></section>
       <section className="flex w-[30%] h-screen justify-center items-center">
         <article className="flex flex-col w-[80%] h-[30%] justify-center items-center gap-[15%]">
           <img src="/Medusa.png" className="w-1/2"></img>
-          <form className="flex flex-col gap-7 w-[100%] justify-center items-center">
+          <form
+            className="flex flex-col gap-7 w-[100%] justify-center items-center"
+            onSubmit={handlerLogin}
+          >
             <input
               type="text"
               placeholder="Usuario"

@@ -6,6 +6,7 @@ import { type UserRepository } from '../domain/UserRepository'
 
 interface UserDocument {
   _id: string
+  usuario: string
   nombre: string
   apellido: string
   oficio: string
@@ -28,8 +29,8 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
 
     if (userDocument == null) throw new UserNoEncontradoError(userId)
 
-    const { nombre, apellido, oficio, contrasena } = userDocument
+    const { usuario, nombre, apellido, oficio, contrasena } = userDocument
 
-    return User.fromPrimitives({ id, nombre, apellido, oficio, contrasena })
+    return User.fromPrimitives({ id, usuario, nombre, apellido, oficio, contrasena })
   }
 }
