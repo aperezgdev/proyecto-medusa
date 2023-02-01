@@ -1,7 +1,7 @@
-import { type Document, type Collection, type MongoClient } from 'mongodb'
-import { type AggregateRoot } from '../domian/AggregateRoot'
-import { type Criteria } from '../domian/Criteria/Criteria'
-import { MongoCriteriaConverter } from './MongoCriteriaConverter'
+import { type Document, type Collection, type MongoClient, ObjectId } from 'mongodb'
+import { type AggregateRoot } from '../domian/AggregateRoot.js'
+import { type Criteria } from '../domian/Criteria/Criteria.js'
+import { MongoCriteriaConverter } from './MongoCriteriaConverter.js'
 
 export abstract class MongoRepository<T extends AggregateRoot> {
   private readonly criteriaConverter: MongoCriteriaConverter
@@ -19,9 +19,11 @@ export abstract class MongoRepository<T extends AggregateRoot> {
   protected async persist(id: string, aggregateRoot: T): Promise<void> {
     const collection = await this.collection()
 
-    const document = { ...aggregateRoot.toPrimitives(), _id: id, id: undefined }
+    const document = { ...aggregateRoot.toPrimitives(), _id: new ObjectId(2), id: undefined }
 
-    await collection.updateOne({ _id: id }, { $set: document }, { upsert: true })
+    await collection.insertOne(document)
+
+    console.log(await collection.find().toArray())
   }
 
   protected async searchByCriteria<D extends Document>(criteria: Criteria): Promise<D[]> {

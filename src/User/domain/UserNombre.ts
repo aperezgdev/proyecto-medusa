@@ -1,5 +1,5 @@
-import { StringValueObject } from '../../Shared/value-objects/StringValueObject'
-import { UserNombreNoValido } from './UserNombreNoValido'
+import { StringValueObject } from '../../Shared/value-objects/StringValueObject.js'
+import { UserNombreNoValido } from './UserNombreNoValido.js'
 
 export class UserNombre extends StringValueObject {
   constructor(value: string) {

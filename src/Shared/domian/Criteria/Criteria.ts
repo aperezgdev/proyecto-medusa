@@ -1,5 +1,5 @@
-import { type Filter } from './Filter'
-import { type Order } from './Order'
+import { type Filter } from './Filter.js'
+import { type Order } from './Order.js'
 
 export class Criteria {
   readonly filters: Filter[]

@@ -1,7 +1,7 @@
-import { FilterOperator } from '../domian/Criteria/FilterOperator'
-import { type Filter } from '../domian/Criteria/Filter'
-import { type Criteria } from '../domian/Criteria/Criteria'
-import { type Order } from '../domian/Criteria/Order'
+import { FilterOperator } from '../domian/Criteria/FilterOperator.js'
+import { type Filter } from '../domian/Criteria/Filter.js'
+import { type Criteria } from '../domian/Criteria/Criteria.js'
+import { type Order } from '../domian/Criteria/Order.js'
 
 type MongoFilterOperator = '$eq' | '$ne' | '$gt' | '$lt' | '$regex'
 type MongoFilterValue = boolean | string | number

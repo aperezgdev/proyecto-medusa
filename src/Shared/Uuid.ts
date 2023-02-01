@@ -1,4 +1,4 @@
-import { StringValueObject } from './value-objects/StringValueObject'
+import { StringValueObject } from './value-objects/StringValueObject.js'
 import { v4 as uuid } from 'uuid'
 
 export class Uuid extends StringValueObject {

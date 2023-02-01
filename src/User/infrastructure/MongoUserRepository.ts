@@ -1,8 +1,9 @@
-import { MongoRepository } from '../../Shared/infrastructure/MongoRepository'
-import { User } from '../domain/User'
-import { type UserId } from '../domain/UserId'
-import { UserNoEncontradoError } from '../domain/UserNoEncontradoError'
-import { type UserRepository } from '../domain/UserRepository'
+import { ObjectId } from 'mongodb'
+import { MongoRepository } from '../../Shared/infrastructure/MongoRepository.js'
+import { User } from '../domain/User.js'
+import { type UserId } from '../domain/UserId.js'
+import { UserNoEncontradoError } from '../domain/UserNoEncontradoError.js'
+import { type UserRepository } from '../domain/UserRepository.js'
 
 interface UserDocument {
   _id: string
@@ -25,7 +26,7 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
   async findById(userId: UserId): Promise<User> {
     const id = userId.value
     const collection = await this.collection()
-    const userDocument = await collection.findOne<UserDocument>({ _id: id })
+    const userDocument = await collection.findOne<UserDocument>({ _id: new ObjectId(id) })
 
     if (userDocument == null) throw new UserNoEncontradoError(userId)
 

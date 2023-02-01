@@ -1,11 +1,11 @@
-import { AggregateRoot } from '../../Shared/domian/AggregateRoot'
-import { Uuid } from '../../Shared/Uuid'
-import { UserApellido } from './UserApellido'
-import { UserContrasena } from './UserContrasena'
-import { UserId } from './UserId'
-import { UserNombre } from './UserNombre'
-import { UserOficio } from './UserOficio'
-import { UserUsuario } from './UserUsuario'
+import { AggregateRoot } from '../../Shared/domian/AggregateRoot.js'
+import { Uuid } from '../../Shared/Uuid.js'
+import { UserApellido } from './UserApellido.js'
+import { UserContrasena } from './UserContrasena.js'
+import { UserId } from './UserId.js'
+import { UserNombre } from './UserNombre.js'
+import { UserOficio } from './UserOficio.js'
+import { UserUsuario } from './UserUsuario.js'
 
 export class User extends AggregateRoot {
   readonly id: UserId
@@ -44,12 +44,12 @@ export class User extends AggregateRoot {
 
   toPrimitives() {
     return {
-      id: this.id,
-      usuario: this.usuario,
-      nombre: this.nombre,
-      apellido: this.apellido,
-      oficio: this.oficio,
-      contrasena: this.contrasena
+      id: this.id.value,
+      usuario: this.usuario.value,
+      nombre: this.nombre.value,
+      apellido: this.apellido.value,
+      oficio: this.oficio.value,
+      contrasena: this.contrasena.value
     }
   }
 

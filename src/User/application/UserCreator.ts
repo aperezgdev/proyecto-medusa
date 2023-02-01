@@ -1,3 +1,4 @@
+import { autoInjectable } from 'tsyringe'
 import { User } from '../domain/User'
 import { type UserApellido } from '../domain/UserApellido'
 import { type UserContrasena } from '../domain/UserContrasena'
@@ -6,6 +7,7 @@ import { type UserOficio } from '../domain/UserOficio'
 import { type UserRepository } from '../domain/UserRepository'
 import { type UserUsuario } from '../domain/UserUsuario'
 
+@autoInjectable()
 export class UserCreator {
   constructor(readonly userRepository: UserRepository) {}
 
