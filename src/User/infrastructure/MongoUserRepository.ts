@@ -38,7 +38,6 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
 
   async findByUsuario(userUsuario: UserUsuario): Promise<User> {
     const nusuario = userUsuario.value
-    console.log(nusuario)
     const collection = await this.collection()
     const userDocument = await collection.findOne<UserDocument>({ usuario: nusuario })
 
