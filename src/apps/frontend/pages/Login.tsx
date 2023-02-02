@@ -1,16 +1,35 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const Login = () => {
   const navigate = useNavigate()
+  const [newUsuario, setNewUsuario] = useState({})
 
-  function handlerLogin(event: any) {
+  function handlerIniciarSesion(event: any) {
     event.preventDefault()
+    void fetch('http://localhost:3001/auth', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUsuario)
+    })
     navigate('/menu')
   }
 
   function handlerRegister(event: any) {
-    event.preventDefault()
     navigate('/registro')
+  }
+
+  function handlerUsuario(event: React.ChangeEvent<HTMLInputElement>) {
+    const usuario = event.target.value
+    setNewUsuario({ ...newUsuario, usuario })
+  }
+
+  function handlerContrasena(event: React.ChangeEvent<HTMLInputElement>) {
+    const contrasena = event.target.value
+    setNewUsuario({ ...newUsuario, contrasena })
   }
 
   return (
@@ -21,17 +40,19 @@ export const Login = () => {
           <img src="/Medusa.png" className="w-1/2"></img>
           <form
             className="flex flex-col gap-7 w-[100%] justify-center items-center"
-            onSubmit={handlerLogin}
+            onSubmit={handlerIniciarSesion}
           >
             <input
               type="text"
               placeholder="Usuario"
               className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
+              onChange={handlerUsuario}
             />
             <input
               type="password"
               placeholder="Contraseña"
               className="border  w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
+              onChange={handlerContrasena}
             />
             <input
               type="submit"

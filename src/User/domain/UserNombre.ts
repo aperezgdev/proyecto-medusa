@@ -9,9 +9,9 @@ export class UserNombre extends StringValueObject {
   }
 
   protected ensureNombreIsLargerThan8(value: string) {
-    if (value.length < 8) {
+    if (value?.length < 3) {
       throw new UserNombreNoValido(
-        'El nombre del usuario es demasiado corto, se necesitan por lo menos 8 caracteres'
+        'El nombre del usuario es demasiado corto, se necesitan por lo menos 3 caracteres'
       )
     }
   }
