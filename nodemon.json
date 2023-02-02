@@ -1,5 +1,5 @@
 {
-  "watch": ["src/apps/backend"],
+  "watch": ["src/apps/backend", "src/Concepto", "src/User", "src/Ingreso", "src/Cuenta"],
   "ext": ".ts,.js",
   "ignore": [],
   "exec": "npx ts-node-esm ./src/apps/backend/index.ts"
