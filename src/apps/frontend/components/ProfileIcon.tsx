@@ -17,7 +17,7 @@ export const ProfileIcon = ({ nombre, apellido, oficio }: PropsProfileIcon) => {
             <img src="/Ajustes.png" className="w-4 h-4 cursor-pointer"></img>
           </div>
           <span className="text-sm font-light">{oficio}</span>
-          <ColorInterfaz/>
+          <ColorInterfaz />
         </section>
       </section>
     </section>

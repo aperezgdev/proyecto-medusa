@@ -20,7 +20,7 @@ export const Menu = () => {
   })
   return (
     <aside className={`flex flex-col w-[20%] h-screen items-center ${color}`}>
-      <section className='flex flex-col items-center gap-10 mt-[15%]'>
+      <section className="flex flex-col items-center gap-10 mt-[15%]">
         <ProfileIcon nombre={user.nombre} apellido={user.apellido} oficio={user.oficio} />
         <Navigator />
       </section>

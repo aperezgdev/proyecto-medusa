@@ -8,6 +8,11 @@ export const Login = () => {
     navigate('/menu')
   }
 
+  function handlerRegister(event: any) {
+    event.preventDefault()
+    navigate('/registro')
+  }
+
   return (
     <main className="flex flex-row w-full">
       <section className="w-[70%] h-screen bg-gradient-to-l from-fuchsia-600 to-pink-600"></section>
@@ -34,7 +39,10 @@ export const Login = () => {
               className="bg-[#C026D3] text-white text-xl cursor-pointer font-bold p-2 w-[50%] rounded-sm"
             />
             <p className="text-lg">
-              ¿No tienes cuenta? <a className="text-blue-600 underline cursor-pointer">Crear</a>
+              ¿No tienes cuenta?{' '}
+              <a className="text-blue-600 underline cursor-pointer" onClick={handlerRegister}>
+                Crear
+              </a>
             </p>
           </form>
         </article>
