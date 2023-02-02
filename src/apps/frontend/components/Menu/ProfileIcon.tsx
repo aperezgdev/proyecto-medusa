@@ -1,4 +1,4 @@
-import { ColorInterfaz } from './ColorInterfaz'
+import { ColorInterfaz } from '../ColorInterfaz'
 
 interface PropsProfileIcon {
   nombre: string
