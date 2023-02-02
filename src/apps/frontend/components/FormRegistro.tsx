@@ -50,50 +50,50 @@ export const FormRegistro = () => {
 
   return (
     <form
-            className="flex flex-col gap-7 w-[100%] justify-center items-center"
-            onSubmit={handlerCrear}
-          >
-            <input
-              type="text"
-              placeholder="Usuario"
-              className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
-              onChange={handlerUsuario}
-            />
-            <input
-              type="text"
-              placeholder="Nombre"
-              className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
-              onChange={handlerNombre}
-            />
-            <input
-              type="text"
-              placeholder="Apellido"
-              className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
-              onChange={handlerApellido}
-            />
-            <input
-              type="text"
-              placeholder="Oficio(opcional)"
-              className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
-              onChange={handlerOficio}
-            />
-            <input
-              type="password"
-              placeholder="Contraseña"
-              className="border  w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
-              onChange={handlerContrasena}
-            />
-            <input
-              type="submit"
-              value="Registrarse"
-              className="bg-[#C026D3] text-white text-xl cursor-pointer font-bold p-2 w-[50%] rounded-sm"
-            />
-            <p className="text-lg">
-              ¿Ya tienes cuenta?{' '}
-              <a className="text-blue-600 underline cursor-pointer" onClick={handlerLogin}>
-                Iniciar Sesión
-              </a>
-            </p>
-          </form>
+      className="flex flex-col gap-7 w-[100%] justify-center items-center"
+      onSubmit={handlerCrear}
+    >
+      <input
+        type="text"
+        placeholder="Usuario"
+        className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
+        onChange={handlerUsuario}
+      />
+      <input
+        type="text"
+        placeholder="Nombre"
+        className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
+        onChange={handlerNombre}
+      />
+      <input
+        type="text"
+        placeholder="Apellido"
+        className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
+        onChange={handlerApellido}
+      />
+      <input
+        type="text"
+        placeholder="Oficio(opcional)"
+        className="border w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
+        onChange={handlerOficio}
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        className="border  w-[65%] text-xl p-2 bg-[#EBEBEB] rounded-sm"
+        onChange={handlerContrasena}
+      />
+      <input
+        type="submit"
+        value="Registrarse"
+        className="bg-[#C026D3] text-white text-xl cursor-pointer font-bold p-2 w-[50%] rounded-sm"
+      />
+      <p className="text-lg">
+        ¿Ya tienes cuenta?{' '}
+        <a className="text-blue-600 underline cursor-pointer" onClick={handlerLogin}>
+          Iniciar Sesión
+        </a>
+      </p>
+    </form>
   )
 }

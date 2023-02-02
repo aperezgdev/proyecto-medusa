@@ -16,11 +16,13 @@ export const FormLogin = () => {
     console.log(auth)
     event.preventDefault()
     if (auth != null) {
-      getUser(auth).then(user => {
-        setAuth(user)
-      }).catch(err => {
-        console.error(err)
-      })
+      getUser(auth)
+        .then((user) => {
+          setAuth(user)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     }
     navigate('/movimientos')
   }

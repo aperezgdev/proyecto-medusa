@@ -8,7 +8,7 @@ export const registerUser = async (newUser: User) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(newUser)
-  }).catch(err => {
+  }).catch((err) => {
     console.error(err)
   })
 }
