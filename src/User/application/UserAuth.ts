@@ -15,7 +15,7 @@ export class UserAuth {
 
     const result = await bcrypt.compare(contrasena.value, user[0].contrasena.value)
 
-    if (!(result)) throw new UserNoEncontradoError()
+    if (!result) throw new UserNoEncontradoError()
 
     return user
   }
