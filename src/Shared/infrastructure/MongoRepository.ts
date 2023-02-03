@@ -22,13 +22,10 @@ export abstract class MongoRepository<T extends AggregateRoot> {
     const document = { ...aggregateRoot.toPrimitives(), _id: new ObjectId(2), id: undefined }
 
     await collection.insertOne(document)
-
-    console.log(await collection.find().toArray())
   }
 
   protected async searchByCriteria<D extends Document>(criteria: Criteria): Promise<D[]> {
     const query = this.criteriaConverter.convert(criteria)
-    console.log(query)
 
     const collection = await this.collection()
 
