@@ -20,13 +20,15 @@ export const Menu = () => {
   })
   return (
     <aside className={`flex flex-col w-[20%] h-screen items-center ${color}`}>
-      <section className="flex flex-col items-center gap-10 mt-[10%]">
-        <ProfileIcon nombre={user.nombre} apellido={user.apellido} oficio={user.oficio} />
-        <Navigator />
+      <section className="flex flex-col items-center p-5 h-[100%]">
+        <article className="flex flex-col items-center gap-10">
+          <ProfileIcon nombre={user.nombre} apellido={user.apellido} oficio={user.oficio} />
+          <Navigator />
+        </article>
+        <article className="flex flex-col items-center mt-auto">
+          <Logout />
+        </article>
       </section>
-      <nav className="flex flex-col items-center mt-auto mb-5">
-        <Logout />
-      </nav>
     </aside>
   )
 }

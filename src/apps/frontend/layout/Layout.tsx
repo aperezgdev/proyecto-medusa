@@ -8,7 +8,7 @@ export const Layout = ({ children }: PropsLayout) => {
   return (
     <>
       <Menu />
-      <main className="flex flex-row w-4/5">{children}</main>
+      <main className="flex flex-col w-4/5 h-screen">{children}</main>
     </>
   )
 }

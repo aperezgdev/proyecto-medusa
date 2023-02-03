@@ -8,7 +8,7 @@ interface PropsProfileIcon {
 
 export const ProfileIcon = ({ nombre, apellido, oficio }: PropsProfileIcon) => {
   return (
-    <section className="flex w-[90%]">
+    <section className="flex w-[100%]">
       <img src="/Medusa.png" className="w-2/5 bg-white rounded-full p-3"></img>
       <section className="flex flex-row w-[100%]  justify-center items-center gap-2">
         <section className="flex flex-col text-white">
