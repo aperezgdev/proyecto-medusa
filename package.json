@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:all": "start npx vite && start npx nodemon",
     "build": "tsc && vite build",
     "lint": "tsc --noEmit && eslint \"**/*.{ts,tsx}\" --quiet --fix",
     "prettier": "prettier --write ./src",
