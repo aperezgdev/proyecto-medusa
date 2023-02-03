@@ -1,8 +1,6 @@
-import { type UserId } from './UserId.js'
-
 export class UserNoEncontradoError extends Error {
-  constructor(id: UserId) {
-    const errorMessage = `El usuario con id ${id.value} no existe`
+  constructor() {
+    const errorMessage = 'El usuario no existe'
     super(errorMessage)
     this.name = UserNoEncontradoError.name
   }

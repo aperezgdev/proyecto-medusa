@@ -1,10 +1,7 @@
-import { ObjectId } from 'mongodb'
+import { type Criteria } from '../../Shared/domian/Criteria/Criteria.js'
 import { MongoRepository } from '../../Shared/infrastructure/MongoRepository.js'
 import { User } from '../domain/User.js'
-import { UserId } from '../domain/UserId.js'
-import { UserNoEncontradoError } from '../domain/UserNoEncontradoError.js'
 import { type UserRepository } from '../domain/UserRepository.js'
-import { type UserUsuario } from '../domain/UserUsuario.js'
 
 interface UserDocument {
   _id: string
@@ -24,27 +21,11 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
     await this.persist(user.id.value, user)
   }
 
-  async findById(userId: UserId): Promise<User> {
-    const id = userId.value
-    const collection = await this.collection()
-    const userDocument = await collection.findOne<UserDocument>({ _id: new ObjectId(id) })
+  async matching(criteria: Criteria): Promise<User[]> {
+    const users = await this.searchByCriteria<UserDocument>(criteria)
 
-    if (userDocument == null) throw new UserNoEncontradoError(userId)
-
-    const { usuario, nombre, apellido, oficio, contrasena } = userDocument
-
-    return User.fromPrimitives({ id, usuario, nombre, apellido, oficio, contrasena })
-  }
-
-  async findByUsuario(userUsuario: UserUsuario): Promise<User> {
-    const nusuario = userUsuario.value
-    const collection = await this.collection()
-    const userDocument = await collection.findOne<UserDocument>({ usuario: nusuario })
-
-    if (userDocument == null) throw new UserNoEncontradoError(new UserId(''))
-
-    const { _id, usuario, nombre, apellido, oficio, contrasena } = userDocument
-
-    return User.fromPrimitives({ id: _id, usuario, nombre, apellido, oficio, contrasena })
+    return users.map(({ _id, usuario, nombre, apellido, oficio, contrasena }) => {
+      return User.fromPrimitives({ id: _id, usuario, nombre, apellido, oficio, contrasena })
+    })
   }
 }

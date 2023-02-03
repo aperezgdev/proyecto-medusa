@@ -28,6 +28,7 @@ export abstract class MongoRepository<T extends AggregateRoot> {
 
   protected async searchByCriteria<D extends Document>(criteria: Criteria): Promise<D[]> {
     const query = this.criteriaConverter.convert(criteria)
+    console.log(query)
 
     const collection = await this.collection()
 

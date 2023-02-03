@@ -1,4 +1,4 @@
-import { OrderType } from './OrderType'
+import { OrderType } from './OrderType.js'
 
 export class Order {
   readonly orderBy: string
