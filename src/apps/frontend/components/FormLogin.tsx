@@ -13,7 +13,6 @@ export const FormLogin = () => {
   const navigate = useNavigate()
 
   function handlerIniciarSesion(event: React.FormEvent) {
-    console.log(auth)
     event.preventDefault()
     if (auth != null) {
       getUser(auth)
