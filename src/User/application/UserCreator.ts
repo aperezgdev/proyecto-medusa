@@ -8,7 +8,10 @@ import { type UserRepository } from '../domain/UserRepository.js'
 import { type UserUsuario } from '../domain/UserUsuario.js'
 import { UserYaExisteError } from '../domain/UserYaExisteError.js'
 export class UserCreator {
-  constructor(readonly userRepository: UserRepository, readonly userFinderExists: UserFinderExists) {}
+  constructor(
+    readonly userRepository: UserRepository,
+    readonly userFinderExists: UserFinderExists
+  ) {}
 
   async run(
     usuario: UserUsuario,

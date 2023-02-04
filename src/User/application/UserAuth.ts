@@ -6,7 +6,10 @@ import { type UserFinderExists } from '../domain/UserFinderExists.js'
 import bcrypt from 'bcrypt'
 
 export class UserAuth {
-  constructor(readonly userRepository: UserRepository, readonly userFinderExists: UserFinderExists) {}
+  constructor(
+    readonly userRepository: UserRepository,
+    readonly userFinderExists: UserFinderExists
+  ) {}
 
   async run(usuario: UserUsuario, contrasena: UserContrasena) {
     const user = await this.userFinderExists.run(usuario)

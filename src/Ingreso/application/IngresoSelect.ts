@@ -7,6 +7,6 @@ export class IngresosSelect {
 
   async run(idUsuario: UserId) {
     const ingresos = await this.ingresoRepository.matching(new IngresoUserCriteria(idUsuario.value))
-    return ingresos.map(ingreso => ingreso.toPrimitives())
+    return ingresos.map((ingreso) => ingreso.toPrimitives())
   }
 }

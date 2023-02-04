@@ -10,7 +10,12 @@ import { type IngresoFecha } from '../domain/IngresoFecha'
 import { type IngresoRepository } from '../domain/IngresoRepository'
 
 export class IngresoCreator {
-  constructor(readonly ingresoRepository: IngresoRepository, readonly cuentaFinder: CuentaFinder, readonly conceptoFinder: ConceptoFinder, readonly userFinder: UserFinder) {}
+  constructor(
+    readonly ingresoRepository: IngresoRepository,
+    readonly cuentaFinder: CuentaFinder,
+    readonly conceptoFinder: ConceptoFinder,
+    readonly userFinder: UserFinder
+  ) {}
 
   async run(
     cantidad: IngresoCantidad,
