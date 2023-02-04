@@ -1,6 +1,6 @@
 import { AggregateRoot } from '../../Shared/domian/AggregateRoot'
-import { type ConceptoId } from './ConceptoId'
-import { type ConceptoNombre } from './ConceptoNombre'
+import { ConceptoId } from './ConceptoId.js'
+import { ConceptoNombre } from './ConceptoNombre.js'
 
 export class Concepto extends AggregateRoot {
   readonly id: ConceptoId
@@ -14,8 +14,15 @@ export class Concepto extends AggregateRoot {
 
   toPrimitives() {
     return {
-      id: this.id,
-      conceptoNombre: this.conceptoNombre
+      id: this.id.value,
+      conceptoNombre: this.conceptoNombre.value
     }
+  }
+
+  static fromPrimitives(primitives: { id: string, conceptoNombre: string }) {
+    return new Concepto(
+      new ConceptoId(primitives.id),
+      new ConceptoNombre(primitives.conceptoNombre)
+    )
   }
 }

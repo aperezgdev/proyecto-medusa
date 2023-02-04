@@ -1,6 +1,7 @@
-import { type Concepto } from './Concepto'
-import { type ConceptoId } from './ConceptoId'
+import { type Criteria } from '../../Shared/domian/Criteria/Criteria.js'
+import { type Concepto } from './Concepto.js'
 
 export interface ConceptoRepository {
-  findById: (conceptoId: ConceptoId) => Promise<Concepto>
+  save: (concepto: Concepto) => Promise<void>
+  matching: (criteria: Criteria) => Promise<Concepto[]>
 }

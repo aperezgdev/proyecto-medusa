@@ -1,13 +1,14 @@
-import { type ConceptoId } from './ConceptoId'
-import { ConceptoNoEncontradoError } from './ConceptoNoEncontradoError'
-import { type ConceptoRepository } from './ConceptoRepository'
+import { type ConceptoId } from './ConceptoId.js'
+import { ConceptoNoEncontradoError } from './ConceptoNoEncontradoError.js'
+import { type ConceptoRepository } from './ConceptoRepository.js'
+import { ConceptoIdCriteria } from './ConceptoIdCriteria.js'
 
 export class ConceptoFinder {
   constructor(private readonly conceptoRepository: ConceptoRepository) {}
 
-  async run(conceptoId: ConceptoId) {
-    const concepto = await this.conceptoRepository.findById(conceptoId)
-    if (concepto == null) throw new ConceptoNoEncontradoError(conceptoId)
+  async run(id: ConceptoId) {
+    const concepto = await this.conceptoRepository.matching(new ConceptoIdCriteria(id.value))
+    if (concepto == null) throw new ConceptoNoEncontradoError(id)
     return concepto
   }
 }

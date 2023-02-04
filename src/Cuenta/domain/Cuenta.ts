@@ -1,9 +1,9 @@
-import { type IngresoCantidad } from '../../Ingreso/domain/IngresoCantidad'
-import { AggregateRoot } from '../../Shared/domian/AggregateRoot'
-import { Uuid } from '../../Shared/Uuid'
-import { type User } from '../../User/domain/User'
-import { type CuentaCantidad } from './CuentaCantidad'
-import { type CuentaId } from './CuentaId'
+import { type IngresoCantidad } from '../../Ingreso/domain/IngresoCantidad.js'
+import { AggregateRoot } from '../../Shared/domian/AggregateRoot.js'
+import { Uuid } from '../../Shared/Uuid.js'
+import { User } from '../../User/domain/User.js'
+import { CuentaCantidad } from './CuentaCantidad.js'
+import { CuentaId } from './CuentaId.js'
 
 export class Cuenta extends AggregateRoot {
   readonly id: CuentaId
@@ -35,5 +35,24 @@ export class Cuenta extends AggregateRoot {
       cantidad: this.cuentaCantidad.value,
       user: this.user.id.value
     }
+  }
+
+  static fromPrimitives(primitives: {
+    id: string
+    cuentaCantidad: number
+    user: {
+      id: string
+      usuario: string
+      nombre: string
+      apellido: string
+      oficio: string
+      contrasena: string
+    }
+  }) {
+    return new Cuenta(
+      new CuentaId(primitives.id),
+      new CuentaCantidad(primitives.cuentaCantidad),
+      User.fromPrimitives(primitives.user)
+    )
   }
 }

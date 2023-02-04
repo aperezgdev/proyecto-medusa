@@ -1,7 +1,4 @@
-interface Auth {
-  usuario: string
-  contrasena: string
-}
+import { type Auth } from '../interfaces/Auth'
 
 const FETCH_OPTIONS = {
   method: 'POST',
