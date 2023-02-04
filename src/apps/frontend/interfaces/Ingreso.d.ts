@@ -1,9 +1,9 @@
 export interface Ingreso {
   id: { value: string }
   cantidad: number
-  concepto: string
+  concepto: { id: string, conceptoNombre: string }
   fecha: Date
-  cuenta: string
+  cuenta: { id: string, cantidad: number, user: User }
   resultado: number
-  user: string
+  user: User
 }

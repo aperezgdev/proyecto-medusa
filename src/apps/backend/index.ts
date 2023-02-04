@@ -10,6 +10,7 @@ import { UserAuth } from '../../User/application/UserAuth.js'
 import { IngresosGetController } from './controller/IngresosGetControler.js'
 import { MongoIngresoRepository } from '../../Ingreso/infrastructure/MongoIngresoRepository.js'
 import { IngresosSelect } from '../../Ingreso/application/IngresoSelect.js'
+import { UserFinderExists } from '../../User/domain/UserFinderExists.js'
 
 const app = express()
 const PORT = 3001
@@ -19,9 +20,10 @@ const client = new MongoClient('mongodb://127.0.0.1:27017/proyecto-medusa')
 const dataBase = client.connect()
 const mongoUserRepository = new MongoUserRepository(dataBase)
 const mongoIngresoRepository = new MongoIngresoRepository(dataBase)
-const userAuth = new UserAuth(mongoUserRepository)
+const userFinderExists = new UserFinderExists(mongoUserRepository)
+const userAuth = new UserAuth(mongoUserRepository, userFinderExists)
 const userPostAuthController = new UserPostAuthController(userAuth)
-const userCreator = new UserCreator(mongoUserRepository)
+const userCreator = new UserCreator(mongoUserRepository, userFinderExists)
 const userPostController = new UserPostController(userCreator)
 const ingresoSelect = new IngresosSelect(mongoIngresoRepository)
 const ingresosGetController = new IngresosGetController(ingresoSelect)

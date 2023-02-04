@@ -1,19 +1,19 @@
-import { UserUsernameCriteria } from '../domain/UserUsernameCriteria.js'
 import { type UserContrasena } from '../domain/UserContrasena.js'
 import { UserNoEncontradoError } from '../domain/UserNoEncontradoError.js'
 import { type UserRepository } from '../domain/UserRepository.js'
 import { type UserUsuario } from '../domain/UserUsuario.js'
+import { type UserFinderExists } from '../domain/UserFinderExists.js'
 import bcrypt from 'bcrypt'
 
 export class UserAuth {
-  constructor(readonly userRepository: UserRepository) {}
+  constructor(readonly userRepository: UserRepository, readonly userFinderExists: UserFinderExists) {}
 
   async run(usuario: UserUsuario, contrasena: UserContrasena) {
-    const user = await this.userRepository.matching(new UserUsernameCriteria(usuario.value))
+    const user = await this.userFinderExists.run(usuario)
 
-    if (user == null) throw new UserNoEncontradoError()
+    if (!user) throw new UserNoEncontradoError()
 
-    const result = await bcrypt.compare(contrasena.value, user[0].contrasena.value)
+    const result = await bcrypt.compare(contrasena.value, user.contrasena.value)
 
     if (!result) throw new UserNoEncontradoError()
 

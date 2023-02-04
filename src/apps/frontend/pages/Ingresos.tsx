@@ -7,12 +7,12 @@ export const Ingresos = () => {
   const [ingresos, setIngresos] = useState<Ingreso[]>()
 
   useEffect(() => {
-    getIngresos('63dba11b881dc13cee6bc9b3')
+    getIngresos('63de7b8a95c8289a44e18d06')
       .then((respuesta) => {
         setIngresos(respuesta)
       })
       .catch((error) => {
-        console.log(error)
+        console.error(error)
       })
   }, [Ingresos])
 
@@ -63,15 +63,12 @@ export const Ingresos = () => {
                               className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
                             >
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {ingresos.concepto}
+                                {ingresos.concepto.conceptoNombre}
                               </td>
                               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {ingresos.cantidad} €
                               </td>
                               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"></td>
-                              <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                {ingresos.resultado} €
-                              </td>
                             </tr>
                           ))}
                         </tbody>

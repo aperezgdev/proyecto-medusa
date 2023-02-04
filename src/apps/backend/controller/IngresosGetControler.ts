@@ -9,6 +9,7 @@ export class IngresosGetController implements Controller {
   async run(req: Request, res: Response) {
     const idUsuario = req.params.idUsuario
     const ingresos = await this.ingresoSelect.run(new UserId(idUsuario))
-    res.send(ingresos.map((ingreso) => ingreso.toPrimitives()))
+    console.log(ingresos)
+    res.send(ingresos)
   }
 }

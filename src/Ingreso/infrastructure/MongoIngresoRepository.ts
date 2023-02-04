@@ -6,7 +6,7 @@ import { type IngresoRepository } from '../domain/IngresoRepository.js'
 interface IngresoDocument {
   _id: string
   ingresoCantidad: number
-  ingresoConcepto: { id: string; conceptoNombre: string }
+  ingresoConcepto: { id: string, conceptoNombre: string }
   ingresoFecha: Date
   cuenta: {
     id: string
@@ -42,7 +42,6 @@ export class MongoIngresoRepository extends MongoRepository<Ingreso> implements 
 
   async matching(criteria: Criteria): Promise<Ingreso[]> {
     const ingresos = await this.searchByCriteria<IngresoDocument>(criteria)
-
     return ingresos.map(
       ({ _id, ingresoCantidad, ingresoConcepto, ingresoFecha, cuenta, resultadoCuenta, user }) => {
         return Ingreso.fromPrimitives({

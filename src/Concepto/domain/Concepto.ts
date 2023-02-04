@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../Shared/domian/AggregateRoot'
+import { AggregateRoot } from '../../Shared/domian/AggregateRoot.js'
 import { ConceptoId } from './ConceptoId.js'
 import { ConceptoNombre } from './ConceptoNombre.js'
 

@@ -7,8 +7,12 @@ export class ConceptoFinder {
   constructor(private readonly conceptoRepository: ConceptoRepository) {}
 
   async run(id: ConceptoId) {
-    const concepto = await this.conceptoRepository.matching(new ConceptoIdCriteria(id.value))
-    if (concepto == null) throw new ConceptoNoEncontradoError(id)
+    const conceptos = await this.conceptoRepository.matching(new ConceptoIdCriteria(id.value))
+
+    if (conceptos.length === 0) throw new ConceptoNoEncontradoError()
+    const concepto = conceptos.at(0)
+    if (concepto == null) throw new ConceptoNoEncontradoError()
+
     return concepto
   }
 }
