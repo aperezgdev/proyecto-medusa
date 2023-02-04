@@ -4,11 +4,10 @@ import { FilterOperator } from '../../Shared/domian/Criteria/FilterOperator.js'
 import { Order } from '../../Shared/domian/Criteria/Order.js'
 import { OrderType } from '../../Shared/domian/Criteria/OrderType.js'
 
-export class UserUsernameCriteria extends Criteria {
+export class UserExistsCriteria extends Criteria {
   constructor(usuario: string) {
-    super(
-      [new Filter('usuario', FilterOperator.EQUAL, usuario)],
-      new Order('usuario', OrderType.NONE)
-    )
+    super([
+      new Filter('usuario', FilterOperator.EQUAL, usuario)
+    ], new Order('usuario', OrderType.NONE))
   }
 }

@@ -7,9 +7,13 @@ export class UserFinder {
   constructor(readonly userRepository: UserRepository) {}
 
   async run(id: UserId) {
-    const user = await this.userRepository.matching(new UserIdCriteria(id.value))
+    const users = await this.userRepository.matching(new UserIdCriteria(id.value))
+
+    if (users.length === 0) throw new UserNoEncontradoError()
+    const user = users.at(0)
 
     if (user == null) throw new UserNoEncontradoError()
+
     return user
   }
 }
