@@ -1,3 +1,5 @@
+import { type MongoClient } from 'mongodb'
+import { inject, singleton } from 'tsyringe'
 import { type Criteria } from '../../Shared/domian/Criteria/Criteria.js'
 import { MongoRepository } from '../../Shared/infrastructure/MongoRepository.js'
 import { User } from '../domain/User.js'
@@ -12,7 +14,12 @@ interface UserDocument {
   contrasena: string
 }
 
+@singleton()
 export class MongoUserRepository extends MongoRepository<User> implements UserRepository {
+  constructor(@inject('MongoClient') private readonly mongoClient: Promise<MongoClient>) {
+    super(mongoClient)
+  }
+
   protected collectionName(): string {
     return 'users'
   }

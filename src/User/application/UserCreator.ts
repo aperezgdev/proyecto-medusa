@@ -1,3 +1,4 @@
+import { inject, singleton } from 'tsyringe'
 import { User } from '../domain/User.js'
 import { type UserApellido } from '../domain/UserApellido.js'
 import { type UserContrasena } from '../domain/UserContrasena.js'
@@ -7,10 +8,12 @@ import { type UserOficio } from '../domain/UserOficio.js'
 import { type UserRepository } from '../domain/UserRepository.js'
 import { type UserUsuario } from '../domain/UserUsuario.js'
 import { UserYaExisteError } from '../domain/UserYaExisteError.js'
+
+@singleton()
 export class UserCreator {
   constructor(
-    readonly userRepository: UserRepository,
-    readonly userFinderExists: UserFinderExists
+    @inject('UserRepository') readonly userRepository: UserRepository,
+    @inject('UserFinderExists') readonly userFinderExists: UserFinderExists
   ) {}
 
   async run(

@@ -4,11 +4,13 @@ import { type UserRepository } from '../domain/UserRepository.js'
 import { type UserUsuario } from '../domain/UserUsuario.js'
 import { type UserFinderExists } from '../domain/UserFinderExists.js'
 import bcrypt from 'bcrypt'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class UserAuth {
   constructor(
-    readonly userRepository: UserRepository,
-    readonly userFinderExists: UserFinderExists
+    @inject('UserRepository') readonly userRepository: UserRepository,
+    @inject('UserFinderExists') readonly userFinderExists: UserFinderExists
   ) {}
 
   async run(usuario: UserUsuario, contrasena: UserContrasena) {

@@ -7,9 +7,11 @@ import { UserOficio } from '../../../User/domain/UserOficio.js'
 import { UserUsuario } from '../../../User/domain/UserUsuario.js'
 import { type Controller } from './Controller'
 import bcrypt from 'bcrypt'
+import { inject, singleton } from 'tsyringe'
 
+@singleton()
 export class UserPostController implements Controller {
-  constructor(private readonly UserCreator: UserCreator) {}
+  constructor(@inject('UserCreator') private readonly UserCreator: UserCreator) {}
 
   async run(req: Request, res: Response) {
     const { usuario, nombre, apellido, oficio, contrasena } = req.body
