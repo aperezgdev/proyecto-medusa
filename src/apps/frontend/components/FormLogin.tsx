@@ -1,7 +1,8 @@
 import { type Auth } from '../interfaces/Auth'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getUser } from '../service/getUser'
+import UserContext from '../context/UserContext'
 
 const AUTH = {
   usuario: '',
@@ -10,6 +11,7 @@ const AUTH = {
 
 export const FormLogin = () => {
   const [auth, setAuth] = useState<Auth>(AUTH)
+  const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
 
   function handlerIniciarSesion(event: React.FormEvent) {
@@ -18,6 +20,7 @@ export const FormLogin = () => {
       getUser(auth)
         .then((user) => {
           setAuth(user)
+          setUser(user)
         })
         .catch((err) => {
           console.error(err)

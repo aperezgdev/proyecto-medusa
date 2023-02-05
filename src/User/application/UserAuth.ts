@@ -22,6 +22,6 @@ export class UserAuth {
 
     if (!result) throw new UserNoEncontradoError()
 
-    return user
+    return user.toPrimitives()
   }
 }
