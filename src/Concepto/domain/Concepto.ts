@@ -19,7 +19,7 @@ export class Concepto extends AggregateRoot {
     }
   }
 
-  static fromPrimitives(primitives: { id: string, conceptoNombre: string }) {
+  static fromPrimitives(primitives: { id: string; conceptoNombre: string }) {
     return new Concepto(
       new ConceptoId(primitives.id),
       new ConceptoNombre(primitives.conceptoNombre)

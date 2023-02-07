@@ -62,7 +62,7 @@ export class Ingreso extends AggregateRoot {
   static fromPrimitives(primitives: {
     id: string
     ingresoCantidad: number
-    ingresoConcepto: { id: string, conceptoNombre: string }
+    ingresoConcepto: { id: string; conceptoNombre: string }
     ingresoFecha: Date
     cuenta: {
       id: string

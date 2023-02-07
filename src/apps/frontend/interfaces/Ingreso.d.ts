@@ -10,9 +10,9 @@ interface UserIngreso {
 export interface Ingreso {
   id: { value: string }
   cantidad: number
-  concepto: { id: string, conceptoNombre: string }
-  fecha: Date
-  cuenta: { id: string, cantidad: number, user: UserIngreso }
+  concepto: { id: string; conceptoNombre: string }
+  fecha: string
+  cuenta: { id: string; cantidad: number; user: UserIngreso }
   resultado: number
   user: UserIngreso
 }

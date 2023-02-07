@@ -25,7 +25,7 @@ export const ProfileIcon = ({ nombre, apellido, oficio }: PropsProfileIcon) => {
             <span className="text-center text-lg font-bold">{`${user.nombre.toUpperCase()} ${user.apellido.toUpperCase()}`}</span>
             <img src="/Ajustes.png" className="w-4 h-4 cursor-pointer"></img>
           </div>
-          <span className="text-sm font-light">{oficio}</span>
+          <span className="text-sm font-light">{user.oficio}</span>
           <ColorInterfaz />
         </section>
       </section>

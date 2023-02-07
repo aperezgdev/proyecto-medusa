@@ -8,7 +8,7 @@ import { type IngresoRepository } from '../domain/IngresoRepository.js'
 interface IngresoDocument {
   _id: string
   ingresoCantidad: number
-  ingresoConcepto: { id: string, conceptoNombre: string }
+  ingresoConcepto: { id: string; conceptoNombre: string }
   ingresoFecha: Date
   cuenta: {
     id: string

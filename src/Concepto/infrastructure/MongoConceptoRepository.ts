@@ -10,7 +10,8 @@ interface ConceptoDocument {
 
 export class MongoConceptoRepository
   extends MongoRepository<Concepto>
-  implements ConceptoRepository {
+  implements ConceptoRepository
+{
   protected collectionName(): string {
     return 'concepto'
   }
