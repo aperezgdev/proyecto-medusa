@@ -2,7 +2,7 @@ import { type Ingreso } from '../../interfaces/Ingreso'
 
 interface PropsIngresos {
   ingreso: Ingreso
-  detallado: React.Dispatch<React.SetStateAction<Ingreso | null>>
+  detallado: React.Dispatch<React.SetStateAction<Ingreso>>
 }
 
 export const Registro = ({ ingreso, detallado }: PropsIngresos) => {

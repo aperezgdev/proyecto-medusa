@@ -11,7 +11,7 @@ interface Token {
 
 const DEFAULT_TOKEN = {
   token: 'asd',
-  expiresIn: new Date(Date.now() - (60 * 1000 * 24))
+  expiresIn: new Date(Date.now() - 60 * 1000 * 24)
 }
 
 const DEFAULT_TOKEN_CONTEXT = {

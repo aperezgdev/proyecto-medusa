@@ -32,7 +32,14 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
     const users = await this.searchByCriteria<UserDocument>(criteria)
 
     return users.map(({ _id, usuario, nombre, apellido, oficio, contrasena }) => {
-      return User.fromPrimitives({ id: _id.toString(), usuario, nombre, apellido, oficio, contrasena })
+      return User.fromPrimitives({
+        id: _id.toString(),
+        usuario,
+        nombre,
+        apellido,
+        oficio,
+        contrasena
+      })
     })
   }
 }

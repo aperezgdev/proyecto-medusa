@@ -24,6 +24,11 @@ export abstract class MongoRepository<T extends AggregateRoot> {
     await collection.insertOne(document)
   }
 
+  protected async erase(id: string): Promise<void> {
+    const collection = await this.collection()
+    await collection.deleteOne({ _id: new ObjectId(id) })
+  }
+
   protected async searchByCriteria<D extends Document>(criteria: Criteria): Promise<D[]> {
     const query = this.criteriaConverter.convert(criteria)
     const collection = await this.collection()

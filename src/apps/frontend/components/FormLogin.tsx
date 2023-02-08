@@ -18,8 +18,11 @@ export const FormLogin = () => {
     event.preventDefault()
     if (auth != null) {
       getUser(auth)
-        .then(token => {
-          setToken({ token: token.token, expiresIn: new Date(Date.now() + (token.expiresIn - 60) * 1000) })
+        .then((token) => {
+          setToken({
+            token: token.token,
+            expiresIn: new Date(Date.now() + (token.expiresIn - 60) * 1000)
+          })
           navigate('/movimientos')
         })
         .catch((err) => {

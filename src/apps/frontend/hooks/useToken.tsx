@@ -11,12 +11,17 @@ export const useToken = () => {
     if (token.expiresIn > new Date(Date.now())) {
       setTokenLoading(false)
     } else {
-      refreshToken().then(resultado => {
-        setToken({ token: resultado.token, expiresIn: new Date(Date.now() + (resultado.expiresIn - 60) * 1000) })
-        setTokenLoading(false)
-      }).catch(err => {
-        console.log(err)
-      })
+      refreshToken()
+        .then((resultado) => {
+          setToken({
+            token: resultado.token,
+            expiresIn: new Date(Date.now() + (resultado.expiresIn - 60) * 1000)
+          })
+          setTokenLoading(false)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }, [token])
 

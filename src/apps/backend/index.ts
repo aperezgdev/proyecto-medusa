@@ -13,10 +13,12 @@ const PORT = 3001
 const jsonParser = bodyParser.json()
 
 app.use(jsonParser)
-app.use(cors({
-  origin: true,
-  credentials: true
-}))
+app.use(
+  cors({
+    origin: true,
+    credentials: true
+  })
+)
 app.use(cookieParser())
 app.use(routes)
 

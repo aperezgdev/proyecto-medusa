@@ -4,7 +4,6 @@ const FETCH_OPTIONS = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
-
   }
 }
 

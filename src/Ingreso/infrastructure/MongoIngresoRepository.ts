@@ -3,6 +3,7 @@ import { inject, singleton } from 'tsyringe'
 import { type Criteria } from '../../Shared/domian/Criteria/Criteria.js'
 import { MongoRepository } from '../../Shared/infrastructure/MongoRepository.js'
 import { Ingreso } from '../domain/Ingreso.js'
+import { type IngresoId } from '../domain/IngresoId.js'
 import { type IngresoRepository } from '../domain/IngresoRepository.js'
 
 interface IngresoDocument {
@@ -45,6 +46,10 @@ export class MongoIngresoRepository extends MongoRepository<Ingreso> implements 
 
   async save(ingreso: Ingreso): Promise<void> {
     await this.persist(ingreso.id.value, ingreso)
+  }
+
+  async delete(idIngreso: IngresoId): Promise<void> {
+    await this.erase(idIngreso.value)
   }
 
   async matching(criteria: Criteria): Promise<Ingreso[]> {

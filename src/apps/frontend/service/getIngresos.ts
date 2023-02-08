@@ -1,4 +1,3 @@
-
 export const getIngresos = async (token: string) => {
   const FETCH_OPTIONS = {
     method: 'GET',

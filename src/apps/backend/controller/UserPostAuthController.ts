@@ -13,7 +13,10 @@ export class UserPostAuthController implements Controller {
   async run(req: Request, res: Response) {
     try {
       const { usuario, contrasena } = req.body
-      const { id } = await this.UserAuth.run(new UserUsuario(usuario), new UserContrasena(contrasena))
+      const { id } = await this.UserAuth.run(
+        new UserUsuario(usuario),
+        new UserContrasena(contrasena)
+      )
 
       const JWT_SECRET = process.env.JWT_SECRET ?? 'xd'
       const JWT_REFRESH = process.env.JWT_REFRESH ?? 'xd'

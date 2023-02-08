@@ -10,13 +10,15 @@ export const useIngresos = () => {
 
   useEffect(() => {
     if (!tokenLoading) {
-      getIngresos(token).then(resultado => {
-        setIngresos(resultado)
-        console.log(resultado)
-        setLoading(false)
-      }).catch(err => {
-        console.error(err)
-      })
+      getIngresos(token)
+        .then((resultado) => {
+          setIngresos(resultado)
+          console.log(resultado)
+          setLoading(false)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     }
   }, [tokenLoading])
 

@@ -4,7 +4,7 @@ import { Registro } from './Registro'
 
 interface PropsIngresos {
   ingresos: Ingreso[]
-  detallado: React.Dispatch<React.SetStateAction<Ingreso | null>>
+  detallado: React.Dispatch<React.SetStateAction<Ingreso>>
 }
 
 export const Tabla = ({ ingresos, detallado }: PropsIngresos) => {
