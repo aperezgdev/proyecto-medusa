@@ -1,25 +1,12 @@
-import { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Tabla } from '../components/TablaIngresos/Tabla'
-import ContextUser from '../context/UserContext'
+import { useIngresos } from '../hooks/useIngresos'
 import { type Ingreso } from '../interfaces/Ingreso'
 import { Layout } from '../layout/Layout'
-import { getIngresos } from '../service/getIngresos'
 
 export const Ingresos = () => {
-  const { user } = useContext(ContextUser)
-  const [ingresos, setIngresos] = useState<Ingreso[]>([])
+  const { loading, ingresos } = useIngresos()
   const [detallado, setDetallado] = useState<Ingreso | null>(null)
-
-  useEffect(() => {
-    getIngresos(user.id)
-      .then((respuesta) => {
-        setIngresos(respuesta)
-        setDetallado(respuesta[respuesta.length - 1])
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }, [Ingresos])
 
   return (
     <Layout>
@@ -28,7 +15,9 @@ export const Ingresos = () => {
         <div className="flex flex-row h-[100%]">
           <div className="flex flex-row w-[100%] h-[100%] gap-[2%] flex-wrap">
             <div className="h-[63%] w-[55%] shadow-md bg-[#FAFAFA]">
-              <Tabla ingresos={ingresos} detallado={setDetallado}></Tabla>
+              {
+                !loading ? <Tabla ingresos={ingresos} detallado={setDetallado}></Tabla> : <div>loading</div>
+              }
             </div>
             <div className="bg-[#FAFAFA] shadow-md h-[40%] w-[23%]"></div>
             <div className="h-min shadow-md w-[18%]">

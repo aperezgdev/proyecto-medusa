@@ -9,12 +9,13 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
   const authorization = req.get('authorization')
 
   if (!authorization) {
-    res.status(400).send()
-    return
+    res.status(400)
+    return res.json({ error: 'Falta el token' })
   }
 
   const JWT_SECRET: Secret = process.env.JWT_SECRET ?? 'xd'
   const token = authorization.substring(7)
+  console.log(token)
   const decodeToken = jwt.verify(token, JWT_SECRET)
 
   if (!decodeToken) {

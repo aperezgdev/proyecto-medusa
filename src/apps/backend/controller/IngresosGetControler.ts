@@ -9,7 +9,7 @@ export class IngresosGetController implements Controller {
   constructor(@inject('IngresoSelect') private readonly ingresoSelect: IngresosSelect) {}
 
   async run(req: Request, res: Response) {
-    const idUsuario = req.params.idUsuario
+    const idUsuario = res.locals.id
     const ingresos = await this.ingresoSelect.run(new UserId(idUsuario))
     res.send(ingresos)
   }

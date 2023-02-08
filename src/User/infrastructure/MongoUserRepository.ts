@@ -1,4 +1,4 @@
-import { type MongoClient } from 'mongodb'
+import { type ObjectId, type MongoClient } from 'mongodb'
 import { inject, singleton } from 'tsyringe'
 import { type Criteria } from '../../Shared/domian/Criteria/Criteria.js'
 import { MongoRepository } from '../../Shared/infrastructure/MongoRepository.js'
@@ -6,7 +6,7 @@ import { User } from '../domain/User.js'
 import { type UserRepository } from '../domain/UserRepository.js'
 
 interface UserDocument {
-  _id: string
+  _id: ObjectId
   usuario: string
   nombre: string
   apellido: string
@@ -32,7 +32,7 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
     const users = await this.searchByCriteria<UserDocument>(criteria)
 
     return users.map(({ _id, usuario, nombre, apellido, oficio, contrasena }) => {
-      return User.fromPrimitives({ id: _id, usuario, nombre, apellido, oficio, contrasena })
+      return User.fromPrimitives({ id: _id.toString(), usuario, nombre, apellido, oficio, contrasena })
     })
   }
 }

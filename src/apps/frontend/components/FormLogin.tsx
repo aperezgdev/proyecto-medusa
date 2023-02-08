@@ -2,7 +2,7 @@ import { type Auth } from '../interfaces/Auth'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getUser } from '../service/getUser'
-import UserContext from '../context/UserContext'
+import UserContext from '../context/tokenContext'
 
 const AUTH = {
   usuario: '',
@@ -11,22 +11,21 @@ const AUTH = {
 
 export const FormLogin = () => {
   const [auth, setAuth] = useState<Auth>(AUTH)
-  const { setUser } = useContext(UserContext)
+  const { setToken } = useContext(UserContext)
   const navigate = useNavigate()
 
   function handlerIniciarSesion(event: React.FormEvent) {
     event.preventDefault()
     if (auth != null) {
       getUser(auth)
-        .then((user) => {
-          setAuth(user)
-          setUser(user)
+        .then(token => {
+          setToken({ token: token.token, expiresIn: new Date(Date.now() + (token.expiresIn - 60) * 1000) })
+          navigate('/movimientos')
         })
         .catch((err) => {
           console.error(err)
         })
     }
-    navigate('/movimientos')
   }
 
   function handlerRegister(event: any) {

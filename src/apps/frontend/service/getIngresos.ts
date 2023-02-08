@@ -1,13 +1,16 @@
-const FETCH_OPTIONS = {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}
 
-export const getIngresos = async (idUsuario: string) => {
-  const result = await fetch('http://localhost:3001/ingresos/' + idUsuario, {
+export const getIngresos = async (token: string) => {
+  const FETCH_OPTIONS = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  }
+
+  const result = await fetch('http://localhost:3001/ingresos/', {
     ...FETCH_OPTIONS
   })
+
   return await result.json()
 }

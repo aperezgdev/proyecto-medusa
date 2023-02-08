@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { container } from 'tsyringe'
+import { authRefreshTokenController } from '../controller/AuthRefreshTokenController.js'
 import { UserPostAuthController } from '../controller/UserPostAuthController.js'
 import { UserPostController } from '../controller/UserPostController.js'
 
@@ -22,4 +23,8 @@ userRouter.post('/user', async (req, res) => {
   } catch (err) {
     console.log(err)
   }
+})
+
+userRouter.post('/refresh', (req, res) => {
+  authRefreshTokenController(req, res)
 })
