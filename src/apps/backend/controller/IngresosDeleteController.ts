@@ -13,5 +13,6 @@ export class IngresosDeleteController implements Controller {
     if (idIngreso != null) {
       await this.ingresoDelete.run(new IngresoId(idIngreso))
     }
+    res.send(200)
   }
 }
