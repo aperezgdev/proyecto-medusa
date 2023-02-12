@@ -17,14 +17,16 @@ export const reducerIngreso = (state: IngresoState, action: IngresoAction): Ingr
   if (type === IngresoActionType.DELETE_INGRESO) {
     const ingreso = payload.ingresos as Ingreso
     const ingresos = state.ingresos.filter((ing) => ing !== ingreso)
-    return { ...state, ingresos, loading: false }
+    return { ...state, ingresos, detallado: ingresos[ingresos.length - 1], loading: false }
   }
 
   if (Array.isArray(payload)) return state
 
   if (type === IngresoActionType.CHG_DETALLADO) return { ...state, detallado: payload.ingresos }
 
-  if (type === IngresoActionType.ADD_INGRESO) { return { ...state, ingresos: [...state.ingresos, payload] } }
+  if (type === IngresoActionType.ADD_INGRESO) {
+    return { ...state, ingresos: [...state.ingresos, payload] }
+  }
 
   return state
 }
