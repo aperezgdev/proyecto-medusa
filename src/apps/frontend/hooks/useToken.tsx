@@ -3,12 +3,11 @@ import ContextToken from '../context/tokenContext'
 import { refreshToken } from '../service/AuthService'
 
 export const useToken = () => {
-  const [tokenLoading, setTokenLoading] = useState(false)
+  const [tokenLoading, setTokenLoading] = useState(true)
   const { token, setToken } = useContext(ContextToken)
 
   useEffect(() => {
-    setTokenLoading(true)
-    if (token.expiresIn > new Date(Date.now())) {
+    if (token.expiresIn.getMilliseconds() > new Date(Date.now() + 60 * 1000).getMilliseconds()) {
       setTokenLoading(false)
     } else {
       refreshToken()
@@ -23,7 +22,7 @@ export const useToken = () => {
           console.log(err)
         })
     }
-  }, [token])
+  }, [])
 
   return { tokenLoading, token: token.token }
 }

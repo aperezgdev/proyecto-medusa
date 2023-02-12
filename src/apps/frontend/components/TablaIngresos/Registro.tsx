@@ -1,25 +1,28 @@
+import { useContext } from 'react'
+import ContextIngreso, { IngresoActionType } from '../../context/ingresoContext'
 import { type Ingreso } from '../../interfaces/Ingreso'
 
 interface PropsIngresos {
   ingreso: Ingreso
-  detallado: React.Dispatch<React.SetStateAction<Ingreso>>
 }
 
-export const Registro = ({ ingreso, detallado }: PropsIngresos) => {
+export const Registro = ({ ingreso }: PropsIngresos) => {
+  const { dispatch } = useContext(ContextIngreso)
+
   return (
-    <tr
+    <div
       key={ingreso.id.value}
-      className="bg-white border-b transition duration-300 text-gray-900 font-light ease-in-out hover:bg-gray-100 whitespace-nowrap cursor-pointer"
+      className="grid grid-cols-4  gap-10 my-2 bg-white border-b transition duration-300 text-gray-900 ease-in-out hover:bg-gray-100 rounded-md cursor-pointer"
       onClick={() => {
-        detallado(ingreso)
+        dispatch({ type: IngresoActionType.CHG_DETALLADO, payload: { ingresos: ingreso } })
       }}
     >
-      <td className="text-base text-gray-900 font-medium px-4 py-3">
+      <div className="flex items-center text-lg text-gray-900 px-5 py-3">
         {ingreso.concepto.conceptoNombre}
-      </td>
-      <td className="text-base px-4 py-3">{ingreso.cantidad} €</td>
-      <td className="text-base px-4 py-3">{ingreso.fecha}</td>
-      <td className="text-base px-4 py-3">{ingreso.resultado} €</td>
-    </tr>
+      </div>
+      <div className="flex items-center text-md px-4 py-3">{ingreso.cantidad} €</div>
+      <div className="flex items-center text-md px-4 py-3">{ingreso.fecha}</div>
+      <div className="flex items-center text-md px-4 py-3">{ingreso.resultado} €</div>
+    </div>
   )
 }

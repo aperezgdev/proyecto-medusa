@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { type Ingreso } from '../interfaces/Ingreso'
-import { getIngresos } from '../service/getIngresos'
+import { getIngresos } from '../service/IngresoService'
 import { useToken } from './useToken'
 
 export const useIngresos = () => {
@@ -13,14 +13,13 @@ export const useIngresos = () => {
       getIngresos(token)
         .then((resultado) => {
           setIngresos(resultado)
-          console.log(resultado)
           setLoading(false)
         })
         .catch((err) => {
           console.error(err)
         })
     }
-  }, [tokenLoading])
+  }, [])
 
   return { loading, ingresos }
 }

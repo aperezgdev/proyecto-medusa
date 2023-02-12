@@ -1,33 +1,22 @@
-import { type Ingreso } from '../../interfaces/Ingreso'
+import { useContext } from 'react'
+import ContextIngreso from '../../context/ingresoContext'
 import { Cabecera } from './Cabecera'
 import { Registro } from './Registro'
 
-interface PropsIngresos {
-  ingresos: Ingreso[]
-  detallado: React.Dispatch<React.SetStateAction<Ingreso>>
-}
+export const Tabla = () => {
+  const { loading, ingresos } = useContext(ContextIngreso)
 
-export const Tabla = ({ ingresos, detallado }: PropsIngresos) => {
   return (
-    <div className="flex flex-col h-[100%] p-5">
-      <span className="text-2xl pb-3 font-bold">Diciembre</span>
-      <div className="overflow-x-auto">
-        <div className="inline-block w-[100%]">
-          <div className="overflow-hidden">
-            <table className="min-w-full">
-              <Cabecera></Cabecera>
-              <tbody>
-                {ingresos?.map((ingreso) => (
-                  <Registro
-                    key={ingreso.id.value}
-                    ingreso={ingreso}
-                    detallado={detallado}
-                  ></Registro>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <div className="flex flex-col p-5 h-full">
+      <Cabecera />
+      <div className="flex flex-col overflow-x-auto my-3">
+        {!loading
+          ? (
+              ingresos.map((ingreso) => <Registro key={ingreso.id.value} ingreso={ingreso}></Registro>)
+            )
+          : (
+          <div>loading</div>
+            )}
       </div>
     </div>
   )
