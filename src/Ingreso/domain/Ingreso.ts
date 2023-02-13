@@ -7,12 +7,16 @@ import { User } from '../../User/domain/User.js'
 import { IngresoCantidad } from './IngresoCantidad.js'
 import { IngresoFecha } from './IngresoFecha.js'
 import { IngresoId } from './IngresoId.js'
+import { IngresoLocalidad } from './IngresoLocalidad.js'
+import { IngresoObservacion } from './IngresoObservacion.js'
 
 export class Ingreso extends AggregateRoot {
   readonly id: IngresoId
   readonly ingresoCantidad: IngresoCantidad
   readonly ingresoConcepto: Concepto
   readonly ingresoFecha: IngresoFecha
+  readonly ingresoObservacion: IngresoObservacion
+  readonly ingresoLocalidad: IngresoLocalidad
   readonly cuenta: Cuenta
   readonly resultadoCuenta: CuentaCantidad
   readonly user: User
@@ -22,6 +26,8 @@ export class Ingreso extends AggregateRoot {
     cantidad: IngresoCantidad,
     concepto: Concepto,
     fecha: IngresoFecha,
+    observacion: IngresoObservacion,
+    localidad: IngresoLocalidad,
     cuenta: Cuenta,
     resultado: CuentaCantidad,
     user: User
@@ -31,6 +37,8 @@ export class Ingreso extends AggregateRoot {
     this.ingresoCantidad = cantidad
     this.ingresoConcepto = concepto
     this.ingresoFecha = fecha
+    this.ingresoObservacion = observacion
+    this.ingresoLocalidad = localidad
     this.cuenta = cuenta
     this.resultadoCuenta = resultado
     this.user = user
@@ -40,11 +48,13 @@ export class Ingreso extends AggregateRoot {
     cantidad: IngresoCantidad,
     concepto: Concepto,
     fecha: IngresoFecha,
+    observacion: IngresoObservacion,
+    localidad: IngresoLocalidad,
     cuenta: Cuenta,
     resultado: CuentaCantidad,
     user: User
   ) {
-    return new Ingreso(Uuid.random(), cantidad, concepto, fecha, cuenta, resultado, user)
+    return new Ingreso(Uuid.random(), cantidad, concepto, fecha, observacion, localidad, cuenta, resultado, user)
   }
 
   toPrimitives() {
@@ -53,6 +63,8 @@ export class Ingreso extends AggregateRoot {
       cantidad: this.ingresoCantidad.value,
       concepto: this.ingresoConcepto.toPrimitives(),
       fecha: this.ingresoFecha.value,
+      observacion: this.ingresoObservacion.value,
+      localidad: this.ingresoLocalidad.value,
       cuenta: this.cuenta.toPrimitives(),
       resultado: this.resultadoCuenta.value,
       user: this.user.toPrimitives()
@@ -64,6 +76,8 @@ export class Ingreso extends AggregateRoot {
     ingresoCantidad: number
     ingresoConcepto: { id: string, conceptoNombre: string }
     ingresoFecha: Date
+    ingresoObservacion: string
+    ingresoLocalidad: string
     cuenta: {
       id: string
       cuentaCantidad: number
@@ -91,6 +105,8 @@ export class Ingreso extends AggregateRoot {
       new IngresoCantidad(primitives.ingresoCantidad),
       Concepto.fromPrimitives(primitives.ingresoConcepto),
       new IngresoFecha(primitives.ingresoFecha),
+      new IngresoObservacion(primitives.ingresoObservacion),
+      new IngresoLocalidad(primitives.ingresoLocalidad),
       Cuenta.fromPrimitives(primitives.cuenta),
       new CuentaCantidad(primitives.resultadoCuenta),
       User.fromPrimitives(primitives.user)
