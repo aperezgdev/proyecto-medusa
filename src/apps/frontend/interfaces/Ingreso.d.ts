@@ -12,6 +12,8 @@ export interface Ingreso {
   cantidad: number
   concepto: { id: string, conceptoNombre: string }
   fecha: string
+  observaciones: string
+  localidad: string
   cuenta: { id: string, cantidad: number, user: UserIngreso }
   resultado: number
   user: UserIngreso

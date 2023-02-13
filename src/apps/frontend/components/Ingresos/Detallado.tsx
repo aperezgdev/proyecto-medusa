@@ -39,13 +39,13 @@ export const Detallado = () => {
               </div>
               <div className="flex flex-row">
                 <span className="w-[40%] font-semibold">Observaciones</span>
-                <span className="w-[60%] text-base">Alex cabron pagame lo que debes</span>
+                <span className="w-[60%] text-base">{detallado.observacion}</span>
               </div>
             </div>
             <div className="flex flex-col w-[49%]">
               <div className="flex flex-row">
                 <span className="w-[40%] font-semibold">Localidad</span>
-                <span className="w-[60%] text-base">Ramales</span>
+                <span className="w-[60%] text-base">{detallado.localidad}</span>
               </div>{' '}
               <div className="flex flex-row">
                 <span className="w-[40%] font-semibold">Resultado Cuenta</span>
