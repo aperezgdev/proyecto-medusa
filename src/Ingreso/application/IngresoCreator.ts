@@ -32,7 +32,16 @@ export class IngresoCreator {
     const user = await this.userFinder.run(idUser)
     const resultado = cuenta.calcularIngreso(cantidad)
     const concepto = await this.conceptoFinder.run(idConcepto)
-    const ingreso = Ingreso.create(cantidad, concepto, fecha, observacion, localidad, cuenta, resultado, user)
+    const ingreso = Ingreso.create(
+      cantidad,
+      concepto,
+      fecha,
+      observacion,
+      localidad,
+      cuenta,
+      resultado,
+      user
+    )
     await this.ingresoRepository.save(ingreso)
   }
 }

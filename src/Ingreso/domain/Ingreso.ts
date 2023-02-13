@@ -54,7 +54,17 @@ export class Ingreso extends AggregateRoot {
     resultado: CuentaCantidad,
     user: User
   ) {
-    return new Ingreso(Uuid.random(), cantidad, concepto, fecha, observacion, localidad, cuenta, resultado, user)
+    return new Ingreso(
+      Uuid.random(),
+      cantidad,
+      concepto,
+      fecha,
+      observacion,
+      localidad,
+      cuenta,
+      resultado,
+      user
+    )
   }
 
   toPrimitives() {

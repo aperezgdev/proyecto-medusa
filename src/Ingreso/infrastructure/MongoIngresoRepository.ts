@@ -57,7 +57,17 @@ export class MongoIngresoRepository extends MongoRepository<Ingreso> implements 
   async matching(criteria: Criteria): Promise<Ingreso[]> {
     const ingresos = await this.searchByCriteria<IngresoDocument>(criteria)
     return ingresos.map(
-      ({ _id, ingresoCantidad, ingresoConcepto, ingresoFecha, ingresoObservacion, ingresoLocalidad, cuenta, resultadoCuenta, user }) => {
+      ({
+        _id,
+        ingresoCantidad,
+        ingresoConcepto,
+        ingresoFecha,
+        ingresoObservacion,
+        ingresoLocalidad,
+        cuenta,
+        resultadoCuenta,
+        user
+      }) => {
         return Ingreso.fromPrimitives({
           id: _id,
           ingresoCantidad,
