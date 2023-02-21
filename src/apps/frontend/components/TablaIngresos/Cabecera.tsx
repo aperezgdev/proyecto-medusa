@@ -5,7 +5,7 @@ export const Cabecera = () => {
     <div className="grid grid-cols-4 gap-10">
       {cabeceras.map((cabecera) => {
         return (
-          <div key={cabecera} className="flex font-semibold text-2xl px-4">
+          <div key={cabecera} className="flex font-semibold text-lg">
             <span>{cabecera}</span>
           </div>
         )

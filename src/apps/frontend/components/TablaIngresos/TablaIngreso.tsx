@@ -3,7 +3,7 @@ import { Tabla } from './Tabla'
 
 export const TablaIngresos = () => {
   return (
-    <CajaGris className="h-1/2" title="Diciembre">
+    <CajaGris className="h-[60%] w-[60%]" title="Diciembre">
       <Tabla />
     </CajaGris>
   )

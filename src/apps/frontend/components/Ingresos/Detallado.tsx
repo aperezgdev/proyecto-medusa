@@ -16,51 +16,53 @@ export const Detallado = () => {
   }
 
   return (
-    <CajaGris title="Ingreso seleccionado">
+    <CajaGris className="h-[38%] w-[60%]" title="Ingreso seleccionado">
       {!detallado
         ? (
-        <div>loading</div>
+        <div>Sin registros</div>
           )
         : (
         <>
-          <div className="flex flex-row text-lg py-5">
-            <div className="flex flex-col">
-              <div className="flex flex-row">
-                <span className="w-[40%] font-semibold">Concepto</span>
-                <span className="w-[60%] text-base">{detallado.concepto.conceptoNombre}</span>
+          <div className="grid grid-cols-3 gap-10 text-lg p-5">
+            <div className="grid grid-cols-1 col-span-2 grid-row-4">
+              <div className="grid grid-cols-2">
+                <span className="font-semibold">Concepto</span>
+                <span className="">{detallado.concepto.conceptoNombre}</span>
               </div>
-              <div className="flex flex-row">
-                <span className="w-[40%] font-semibold">Cantidad</span>
-                <span className="w-[60%] text-base">{detallado.cantidad} €</span>
+              <div className="grid grid-cols-2">
+                <span className="font-semibold">Cantidad</span>
+                <span className="">{detallado.cantidad} €</span>
               </div>
-              <div className="flex flex-row ">
-                <span className="w-[40%] font-semibold">Fecha</span>
-                <span className="w-[60%] text-base">{detallado.fecha}</span>
+              <div className="grid grid-cols-2 ">
+                <span className="font-semibold">Fecha</span>
+                <span className="">{detallado.fecha}</span>
               </div>
-              <div className="flex flex-row">
-                <span className="w-[40%] font-semibold">Observaciones</span>
-                <span className="w-[60%] text-base">{detallado.observacion}</span>
+              <div className="grid grid-cols-2">
+                <span className="font-semibold">Observaciones</span>
+                <span className="">{detallado.observacion}</span>
               </div>
-            </div>
-            <div className="flex flex-col w-[49%]">
-              <div className="flex flex-row">
-                <span className="w-[40%] font-semibold">Localidad</span>
-                <span className="w-[60%] text-base">{detallado.localidad}</span>
+              <div className="grid grid-cols-2">
+                <span className="font-semibold">Localidad</span>
+                <span className="">{detallado.localidad}</span>
               </div>{' '}
-              <div className="flex flex-row">
-                <span className="w-[40%] font-semibold">Resultado Cuenta</span>
-                <span className="w-[60%] text-base">{detallado.resultado} €</span>
+              <div className="grid grid-cols-2">
+                <span className="font-semibold">Resultado Cuenta</span>
+                <span className="">{detallado.resultado} €</span>
               </div>
             </div>
-          </div>
-          <div className="flex w-[100%]">
+            <div className="grid grid-cols-1 grid-row-3 col-span-1 ">
+            <div className="flex w-[100%]">
             <form
-              className="flex w-[100%] flex-row text-lg gap-[2%] text-white justify-center items-center font-semibold"
+              className="flex w-[100%] flex-col text-lg gap-[10%] text-white justify-center items-center font-semibold"
               onSubmit={handlerSubmit}
             >
-              <button className="bg-[#C026D3] w-[35%] rounded-md py-2">Editar</button>
               <button
-                className="bg-[#C026D3] w-[35%] rounded-md py-2"
+                className="bg-[#C026D3] w-[100%] rounded-md py-2"
+              >
+                Editar
+              </button>
+              <button
+                className="bg-[#C026D3] w-[100%] rounded-md py-2"
                 onClick={async () => {
                   await borrarIngreso()
                 }}
@@ -69,6 +71,9 @@ export const Detallado = () => {
               </button>
             </form>
           </div>
+            </div>
+          </div>
+
         </>
           )}
     </CajaGris>
